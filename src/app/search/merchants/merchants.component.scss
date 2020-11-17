@@ -1,0 +1,17 @@
+.box {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  grid-template-areas: "image content";
+
+  .image {
+    grid-area: image;
+  }
+
+  .detail {
+    grid-area: content;
+  }
+}
+
+img {
+  max-width: 100%;
+}

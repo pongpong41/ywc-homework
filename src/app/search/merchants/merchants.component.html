@@ -1,0 +1,10 @@
+<section>
+  <div class="box" *ngFor="let merchant of merchants">
+    <div class="image"><img [src]="merchant.coverImageId"></div>
+    <div class="detail">
+      <h3>{{merchant.shopNameTH}}</h3>
+      <!-- if image not work -->
+      <p>{{merchant.categoryName}} | {{merchant.subcategoryName}}</p>
+    </div>
+  </div>
+</section>

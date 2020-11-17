@@ -1,0 +1,11 @@
+<mat-sidenav-container class="example-container">
+  <mat-sidenav #sidenav mode="over"> filter </mat-sidenav>
+  <mat-sidenav-content>
+    <p><button mat-button (click)="sidenav.toggle()">Toggle</button></p>
+    <div>ผลการค้นหา</div>
+    <div class="container">
+      <app-filter class="filter"></app-filter>
+      <app-merchants class="merchant"></app-merchants>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

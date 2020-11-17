@@ -1,0 +1,32 @@
+<!-- if filter have value -->
+<div *ngIf="filter">
+  <mat-label>ประเภทร้านค้า</mat-label>
+  <mat-radio-button
+    *ngFor="let category of filter.categories"
+    (click)="selectCategory(category)"
+  >
+    {{ category.name }}
+  </mat-radio-button>
+
+  <mat-label>จังหวัด/ใกล้ฉัน</mat-label>
+  <mat-select>
+    <mat-option *ngFor="let provinces of filter.provinces" [value]="provinces">
+      {{ provinces }}
+    </mat-option>
+  </mat-select>
+
+  <mat-label>ราคา</mat-label>
+  <mat-select>
+    <mat-option
+      *ngFor="let priceRange of filter.priceRange"
+      [value]="priceRange"
+    >
+      {{ priceRange }}
+    </mat-option>
+  </mat-select>
+
+  <mat-label>ประเภท{{ currentCategory?.name }}</mat-label>
+  <mat-radio-button *ngFor="let subcategory of currentCategory?.subcategories">
+    {{ subcategory }}
+  </mat-radio-button>
+</div>

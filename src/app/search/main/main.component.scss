@@ -1,0 +1,13 @@
+.container {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  grid-template-areas: "side content";
+
+  .filter {
+    grid-area: side;
+  }
+
+  .merchant {
+    grid-area: content;
+  }
+}
