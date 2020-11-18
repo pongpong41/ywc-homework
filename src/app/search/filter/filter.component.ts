@@ -8,8 +8,12 @@ import { Category, Filter } from '../type';
   styleUrls: ['./filter.component.scss'],
 })
 export class FilterComponent implements OnInit {
-  filter: Filter|null = null;
-  currentCategory: Category|null = null;
+  filter: Filter | null = null;
+
+  selectedCategory: Category | null = null;
+  selectedProvince: string | null = null;
+  selectedPriceRange: number | null = null;
+  selectedSubcategory: string | null = null;
 
   constructor(private searchService: SearchService) {}
 
@@ -20,6 +24,6 @@ export class FilterComponent implements OnInit {
   }
 
   selectCategory(category: Category): void {
-    this.currentCategory = category;
+    this.selectedCategory = category;
   }
 }

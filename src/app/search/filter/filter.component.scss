@@ -1,0 +1,25 @@
+.box {
+  border: 1px solid #e2e8f0;
+  padding: 1rem;
+}
+
+.filter-form {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 32px;
+
+  label {
+    font-size: 18px;
+    margin-bottom: 8px;
+    font-weight: bold;
+  }
+}
+
+.radio-group {
+  display: flex;
+  flex-direction: column;
+
+  mat-radio-button {
+    margin-bottom: 8px;
+  }
+}
