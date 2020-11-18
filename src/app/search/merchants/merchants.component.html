@@ -1,10 +1,42 @@
-<section>
+<section class="grid-container">
   <div class="box" *ngFor="let merchant of merchants">
-    <div class="image"><img [src]="merchant.coverImageId"></div>
-    <div class="detail">
-      <h3>{{merchant.shopNameTH}}</h3>
+    <div class="image-container">
+      <div
+        class="image"
+        [style.background-image]="'url(' + merchant.coverImageId + ')'"
+      ></div>
+    </div>
+    <div class="text-container">
+      <div class="title">
+        <h2 class="font-black">{{ merchant.shopNameTH }}</h2>
+        <div class="tag green" *ngIf="merchant.isOpen === 'Y'">เปิดอยู่</div>
+        <div class="tag gray" *ngIf="merchant.isOpen === 'N'">ปิดแล้ว</div>
+      </div>
       <!-- if image not work -->
-      <p>{{merchant.categoryName}} | {{merchant.subcategoryName}}</p>
+      <div class="detail">
+        {{ merchant.subcategoryName }}
+        <span *ngIf="merchant.priceLevel">
+          <span class="separator">|</span>{{ merchant.priceLevel }}</span
+        >
+        <span
+          *ngIf="merchant.addressDistrictName || merchant.addressProvinceName"
+        >
+          <span class="separator">|</span>{{ merchant.addressDistrictName }}
+          {{ merchant.addressProvinceName }}</span
+        >
+      </div>
+      <mat-divider></mat-divider>
+      <div class="content">
+        <div [innerHTML]="merchant.highlightText"></div>
+        <div *ngIf="merchant.recommendedItems">
+          <b class="font-black"
+            >{{ getRecommendedText(merchant.categoryName) }}:
+          </b>
+          <span *ngFor="let item of merchant.recommendedItems"
+            >{{ item }}
+          </span>
+        </div>
+      </div>
     </div>
   </div>
 </section>

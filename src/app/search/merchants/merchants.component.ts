@@ -5,12 +5,12 @@ import { Merchant } from '../type';
 @Component({
   selector: 'app-merchants',
   templateUrl: './merchants.component.html',
-  styleUrls: ['./merchants.component.scss']
+  styleUrls: ['./merchants.component.scss'],
 })
 export class MerchantsComponent implements OnInit {
   merchants: Merchant[] = [];
 
-  constructor(private searchService: SearchService) { }
+  constructor(private searchService: SearchService) {}
 
   ngOnInit(): void {
     this.searchService.getCurrentMerchants().subscribe((currentMerchants) => {
@@ -18,4 +18,10 @@ export class MerchantsComponent implements OnInit {
     });
   }
 
+  getRecommendedText(category: string): string {
+    if (category === 'ร้านอาหาร') {
+      return 'เมนูแนะนำ';
+    }
+    return 'สินค้าแนะนำ';
+  }
 }

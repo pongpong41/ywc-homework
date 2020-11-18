@@ -1,4 +1,25 @@
 /* You can add global styles to this file, and also import other style files */
+// @import url("https://fonts.googleapis.com/css2?family=Prompt");
+@import url("https://fonts.googleapis.com/css2?family=Prompt:wght@200;300;400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap");
+@import "./styles/config-theme.scss";
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-size: 14px;
+  font-family: "Open Sans", Prompt, Roboto;
+  font-weight: 400;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
