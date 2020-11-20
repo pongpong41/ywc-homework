@@ -33,7 +33,6 @@ export class HeaderComponent implements OnInit {
     this.searchService.getCurrentFilter().subscribe((currentFilter) => {
       this.filter = currentFilter;
     });
-    console.log(this.filter);
     this.searchService.getCurrentSearchFilter().subscribe((currentSearch) => {
       this.searchFilter = currentSearch;
     });
@@ -41,6 +40,10 @@ export class HeaderComponent implements OnInit {
 
   openFilter(): void {
     this.openEvent.emit();
+  }
+
+  searchChanged(): void {
+    this.searchService.updateSearchFilter(this.searchFilter);
   }
 
   get hintTextSearch(): string {

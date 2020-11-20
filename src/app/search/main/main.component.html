@@ -1,13 +1,26 @@
-<section class="container">
-  <h2 class="title">ผลการค้นหา {{ searchText }}</h2>
-  <div class="grid-container">
-    <div class="filter">
-      <app-filter class="box"></app-filter>
-    </div>
-    <section class="merchant">
-      <div *ngFor="let merchant of merchants">
-        <app-merchants class="merchant" [merchant]="merchant"></app-merchants>
+<div class="background">
+  <section class="container">
+    <h2 class="title">ผลการค้นหา {{ searchText }}</h2>
+    <div class="grid-container">
+      <div class="filter">
+        <app-filter class="box"></app-filter>
       </div>
-    </section>
-  </div>
-</section>
+      <section class="merchant">
+        <div *ngIf="merchants.length === 0" class="center-text">
+          ไม่พบร้านค้า
+        </div>
+        <div *ngFor="let merchant of merchants">
+          <app-merchants class="merchant" [merchant]="merchant"></app-merchants>
+        </div>
+        <button
+          mat-stroked-button
+          class="button-show-more"
+          [class.none]="merchants.length > 20 || merchants.length === 0"
+          (click)="showMore()"
+        >
+          ดูเพิ่มเติม
+        </button>
+      </section>
+    </div>
+  </section>
+</div>

@@ -1,4 +1,3 @@
-<!-- if filter have value -->
 <div *ngIf="filter">
   <div class="filter-form">
     <label>ประเภทร้านค้า</label>
@@ -30,15 +29,24 @@
               searchFilter.province === 'พื้นที่ใกล้ฉัน' ||
               searchFilter.province === 'สถานที่ทั้งหมด'
             "
-            >location_on</mat-icon
-          >{{ searchFilter.province }}
+            class="select-icon"
+          >
+            location_on
+          </mat-icon>
+          <span
+            [class.select-text]="
+              searchFilter.province === 'พื้นที่ใกล้ฉัน' ||
+              searchFilter.province === 'สถานที่ทั้งหมด'
+            "
+            >{{ searchFilter.province }}</span
+          >
         </mat-select-trigger>
         <mat-option [value]="'พื้นที่ใกล้ฉัน'">
-          <mat-icon>location_on</mat-icon>พื้นที่ใกล้ฉัน
+          <mat-icon>location_on</mat-icon>
+          พื้นที่ใกล้ฉัน
         </mat-option>
         <mat-option [value]="'สถานที่ทั้งหมด'">
           <mat-icon>location_on</mat-icon>
-          <!-- <span class="material-icons">location_on</span> -->
           สถานที่ทั้งหมด
         </mat-option>
         <mat-option
@@ -59,6 +67,7 @@
         (ngModelChange)="searchChanged()"
         placeholder="กรุณาเลื่อก"
       >
+        <mat-option [value]="null">ทั้งหมด</mat-option>
         <mat-option
           *ngFor="let priceRange of filter.priceRange; let i = index"
           [value]="i + 1"

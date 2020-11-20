@@ -22,7 +22,6 @@ import { MainComponent } from './search/main/main.component';
 import { FilterComponent } from './search/filter/filter.component';
 import { MerchantsComponent } from './search/merchants/merchants.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { SideComponent } from './core/side/side.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +31,6 @@ import { SideComponent } from './core/side/side.component';
     MainComponent,
     FilterComponent,
     MerchantsComponent,
-    SideComponent,
   ],
   imports: [
     BrowserModule,

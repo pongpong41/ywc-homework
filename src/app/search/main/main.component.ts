@@ -1,10 +1,4 @@
-import {
-  ChangeDetectorRef,
-  Component,
-  OnDestroy,
-  OnInit,
-  ViewEncapsulation,
-} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { SearchService } from 'src/app/search.service';
 import { Merchant, SearchFilter } from '../type';
 
@@ -26,6 +20,10 @@ export class MainComponent implements OnInit {
     this.searchService.getCurrentSearchFilter().subscribe((currentSearch) => {
       this.searchFilter = currentSearch;
     });
+  }
+
+  showMore(): void {
+    this.searchService.mockMerchants();
   }
 
   get searchText(): string {

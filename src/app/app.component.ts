@@ -10,15 +10,21 @@ import { MatSidenav } from '@angular/material/sidenav';
 export class AppComponent implements OnInit {
   @ViewChild('sidenav') sidenav: MatSidenav;
   title = 'ywc-homework';
+  isLoading = false;
   constructor(private searchService: SearchService) {}
 
   ngOnInit(): void {
-    console.log('get search');
-    this.searchService.updateSearch().subscribe();
+    this.isLoading = true;
+    this.searchService.updateSearch().subscribe(() => {
+      this.isLoading = false;
+    });
   }
 
   openSideBar(): void {
-    console.log('2');
     this.sidenav.open();
+  }
+
+  mock(): void {
+    this.searchService.setMockData();
   }
 }

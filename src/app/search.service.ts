@@ -23,28 +23,21 @@ export class SearchService {
     province: 'พื้นที่ใกล้ฉัน',
     priceRange: null,
   });
+  private allMerchants: Merchant[] = [];
 
   constructor(private http: HttpClient) {}
 
   updateSearch(): Observable<any> {
-    console.log('in');
     return this.http.get<ApiResult>(this.apiUrl).pipe(
       map((apiResult: ApiResult) => {
-        console.log('map');
         const { merchants, ...filter } = apiResult;
-        console.log('merchant', merchants);
-        console.log('filter:', filter);
         this.currentFilter.next(filter);
         this.currentMerchant.next(merchants);
+        this.allMerchants = merchants;
       }),
       catchError(
         (error: any): Observable<void> => {
           console.error(error);
-          const { merchants, ...filter } = MOCK;
-          console.log('merchant', merchants);
-          console.log('filter:', filter);
-          this.currentFilter.next(filter);
-          this.currentMerchant.next(merchants);
           return of(error);
         }
       )
@@ -71,10 +64,50 @@ export class SearchService {
     return this.searchFilter.asObservable();
   }
 
-  updateSearchFilter(filter?: SearchFilter): void {
-    console.log(filter);
-    if (filter) {
-      this.searchFilter.next(filter);
+  updateSearchFilter(filter: SearchFilter): void {
+    let filteredMerchants = this.allMerchants;
+    if (filter.category) {
+      if (filter.category.name === 'สินค้าทั่วไป') {
+        filteredMerchants = filteredMerchants.filter(
+          (merchant) => !merchant.categoryName.includes('อาหาร')
+        );
+      } else {
+        filteredMerchants = filteredMerchants.filter((merchant) =>
+          filter.category?.name.includes(merchant.categoryName)
+        );
+      }
     }
+    if (filter.subcategory) {
+      filteredMerchants = filteredMerchants.filter(
+        (merchant) => merchant.subcategoryName === filter.subcategory
+      );
+    }
+    if (
+      filter.province !== 'พื้นที่ใกล้ฉัน' &&
+      filter.province !== 'สถานที่ทั้งหมด'
+    ) {
+      filteredMerchants = filteredMerchants.filter(
+        (merchant) => merchant.addressProvinceName === filter.province
+      );
+    }
+    if (filter.priceRange) {
+      filteredMerchants = filteredMerchants.filter(
+        (merchant) => merchant.priceLevel === filter.priceRange
+      );
+    }
+    this.searchFilter.next(filter);
+    this.currentMerchant.next(filteredMerchants);
+  }
+
+  mockMerchants(): void {
+    const newMerchants = this.merchants.concat(this.merchants.slice(0, 5));
+    this.currentMerchant.next(newMerchants);
+  }
+
+  setMockData(): void {
+    const { merchants, ...filter } = MOCK;
+    this.currentFilter.next(filter);
+    this.currentMerchant.next(merchants);
+    this.allMerchants = merchants;
   }
 }

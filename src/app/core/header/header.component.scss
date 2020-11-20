@@ -1,10 +1,13 @@
-$blue: rgb(39, 57, 124);
+@import "src/styles/variables.scss";
 
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin: auto;
   padding: 8px 32px;
+  max-width: 1280px;
+  box-sizing: border-box;
 }
 
 .logo {
@@ -48,17 +51,21 @@ $blue: rgb(39, 57, 124);
   white-space: nowrap;
 }
 
-// .logo {
-//   height: 40px;
-//   margin-right: 32px;
-// }
-
 .input-group {
   display: flex;
   width: 100%;
 }
 
-app-header .mat-form-field-appearance-outline {
+.select-icon {
+  position: absolute;
+  transform: translateY(-5px);
+}
+
+.select-text {
+  margin-left: 24px;
+}
+
+.input-group .mat-form-field-appearance-outline {
   &.left-input {
     width: 192px;
     .mat-form-field-outline-end {
@@ -70,23 +77,21 @@ app-header .mat-form-field-appearance-outline {
     width: 100%;
     margin-left: -1px;
 
-    @media (min-width: 769px) {
-      .mat-form-field-outline-start {
-        border-radius: 0 !important;
-      }
+    .mat-form-field-outline-start {
+      border-radius: 0 !important;
     }
   }
+}
 
-  .mat-form-field-wrapper {
-    margin: 0;
-  }
+.mg-8 {
+  margin-left: 8px;
 }
 
 .action-mobile {
   display: none;
 }
 
-@media (max-width: 768px) {
+@media (max-width: $small-screen) {
   .header {
     padding: 8px 0 8px 16px;
   }
@@ -103,6 +108,10 @@ app-header .mat-form-field-appearance-outline {
   app-header .mat-form-field-appearance-outline {
     &.left-input {
       display: none;
+    }
+
+    &.right-input .mat-form-field-outline-start {
+      border-radius: 5px 0 0 5px !important;
     }
   }
 }

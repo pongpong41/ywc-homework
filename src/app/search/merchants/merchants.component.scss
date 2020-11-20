@@ -1,10 +1,4 @@
-$green: #1bc300;
-
-.grid-container {
-  display: grid;
-  grid-template-columns: repeat(1, minmax(0, 1fr));
-  row-gap: 8px;
-}
+@import "src/styles/variables.scss";
 
 .box {
   display: grid;
@@ -40,10 +34,10 @@ $green: #1bc300;
     margin-bottom: 8px;
   }
 
-  .detail {
-  }
-
   .content {
+    > div {
+      margin-bottom: 8px;
+    }
   }
 
   .tag {
@@ -73,10 +67,13 @@ $green: #1bc300;
     color: black;
   }
 
+  .font-dark {
+    color: rgba(0, 0, 0, 0.85);
+  }
+
   .circle-border {
     display: inline-block;
     padding: 4px;
-    // width: ;
     font-size: 18px;
     color: $green;
     border: 1px solid $green;
@@ -86,7 +83,11 @@ $green: #1bc300;
   }
 }
 
-@media (max-width: 1024px) {
+.nowrap {
+  white-space: nowrap;
+}
+
+@media (max-width: $medium-screen) {
   .box {
     grid-template-columns: none;
     grid-template-rows: 224px 1fr;

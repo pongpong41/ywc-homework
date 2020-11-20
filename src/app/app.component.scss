@@ -21,3 +21,19 @@
     width: 100%;
   }
 }
+
+mat-sidenav-content {
+  background-color: white;
+}
+
+.center-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.hidden-action {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+}

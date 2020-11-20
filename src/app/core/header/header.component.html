@@ -1,5 +1,4 @@
 <section class="header">
-  <!-- <img class="logo" src="assets/img/halfhalf-logo.png" alt="logo" /> -->
   <div class="logo">
     <div class="logo-img">
       <span class="material-icons jigsaw-blue">extension</span>
@@ -15,9 +14,38 @@
       appearance="outline"
       class="custom-mat-form-field left-input"
     >
-      <mat-select [(ngModel)]="searchFilter.province">
+      <mat-select
+        [(ngModel)]="searchFilter.province"
+        (ngModelChange)="searchChanged()"
+      >
+        <mat-select-trigger>
+          <mat-icon
+            *ngIf="
+              searchFilter.province === 'พื้นที่ใกล้ฉัน' ||
+              searchFilter.province === 'สถานที่ทั้งหมด'
+            "
+            class="select-icon"
+          >
+            location_on
+          </mat-icon>
+          <span
+            [class.select-text]="
+              searchFilter.province === 'พื้นที่ใกล้ฉัน' ||
+              searchFilter.province === 'สถานที่ทั้งหมด'
+            "
+            >{{ searchFilter.province }}</span
+          >
+        </mat-select-trigger>
+        <mat-option [value]="'พื้นที่ใกล้ฉัน'">
+          <mat-icon>location_on</mat-icon>
+          พื้นที่ใกล้ฉัน
+        </mat-option>
+        <mat-option [value]="'สถานที่ทั้งหมด'">
+          <mat-icon>location_on</mat-icon>
+          สถานที่ทั้งหมด
+        </mat-option>
         <mat-option
-          *ngFor="let provinces of filter?.provinces"
+          *ngFor="let provinces of filter.provinces || []"
           [value]="provinces"
         >
           {{ provinces }}
@@ -25,9 +53,9 @@
       </mat-select>
     </mat-form-field>
 
-    <mat-form-field class="example-full-width right-input" appearance="outline">
+    <mat-form-field appearance="outline" class="right-input">
       <input matInput [placeholder]="hintTextSearch" />
-      <mat-icon matSuffix>search</mat-icon>
+      <mat-icon matSuffix class="mg-8">search</mat-icon>
     </mat-form-field>
   </div>
 

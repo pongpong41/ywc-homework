@@ -1,7 +1,15 @@
+@import "src/styles/variables.scss";
+
+.container {
+  background-color: $blue;
+}
+
 .nav {
+  margin: auto;
   padding: 0.75rem 2rem;
+  max-width: $large-screen;
+  box-sizing: border-box;
   color: white;
-  background-color: rgb(39, 57, 124);
 
   a {
     color: white;

@@ -14,7 +14,7 @@
     <!-- if image not work -->
     <div class="detail">
       {{ merchant.subcategoryName }}
-      <span *ngIf="merchant.priceLevel">
+      <span *ngIf="merchant.priceLevel" class="nowrap">
         <span class="separator-text">|</span>
         <span [class.font-black]="merchant.priceLevel > 0">฿</span>
         <span [class.font-black]="merchant.priceLevel > 1">฿</span>
@@ -32,13 +32,11 @@
     <div class="content">
       <div [innerHTML]="merchant.highlightText"></div>
       <div *ngIf="merchant.recommendedItems">
-        <b class="font-black">{{ recommendedText }}: </b>
-        <span *ngFor="let item of merchant.recommendedItems">{{ item }} </span>
+        <b class="font-dark">{{ recommendedText }}: </b>
+        <span *ngFor="let item of merchant.recommendedItems"> {{ item }} </span>
       </div>
       <div>
         <span *ngFor="let facility of merchant.facilities">
-          <!-- <span>{{ facility }}</span> -->
-          <!-- <span class="circle-border"> -->
           <span
             class="material-icons md-18 circle-border"
             [matTooltip]="facility"
@@ -46,7 +44,6 @@
             {{ getIconName(facility) }}
           </span>
         </span>
-        <!-- </span> -->
       </div>
     </div>
   </div>
