@@ -77,8 +77,10 @@
     width: 100%;
     margin-left: -1px;
 
-    .mat-form-field-outline-start {
-      border-radius: 0 !important;
+    @media (min-width: 769px) {
+      .mat-form-field-outline-start {
+        border-radius: 0 !important;
+      }
     }
   }
 }
@@ -108,10 +110,6 @@
   app-header .mat-form-field-appearance-outline {
     &.left-input {
       display: none;
-    }
-
-    &.right-input .mat-form-field-outline-start {
-      border-radius: 5px 0 0 5px !important;
     }
   }
 }

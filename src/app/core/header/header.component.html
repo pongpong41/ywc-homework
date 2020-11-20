@@ -45,7 +45,7 @@
           สถานที่ทั้งหมด
         </mat-option>
         <mat-option
-          *ngFor="let provinces of filter.provinces || []"
+          *ngFor="let provinces of filter?.provinces || []"
           [value]="provinces"
         >
           {{ provinces }}
