@@ -1,9 +1,20 @@
-mat-sidenav-container {
+.container {
+  background: linear-gradient(rgb(255, 255, 255) 20%, rgb(142, 208, 241));
+  background-attachment: fixed;
+}
+
+mat-sidenav-content {
   padding: 1rem;
+  background: linear-gradient(rgb(255, 255, 255) 20%, rgb(142, 208, 241));
+  background-attachment: fixed;
 }
 
 .side-toggle {
   width: 100%;
+}
+
+.side-open {
+  width: 240px;
 }
 
 .container {
@@ -19,5 +30,16 @@ mat-sidenav-container {
 
   .merchant {
     grid-area: content;
+    display: flex;
+    flex-direction: column;
+
+    .box {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      grid-template-areas: "image-container text-container";
+      min-height: 232px;
+      background-color: white;
+      border: 1px solid rgb(201, 225, 233);
+    }
   }
 }

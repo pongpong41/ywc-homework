@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SearchService } from 'src/app/search.service';
-import { Category, Filter } from '../type';
+import { Category, Filter, SearchFilter } from '../type';
 
 @Component({
   selector: 'app-filter',
@@ -10,20 +10,27 @@ import { Category, Filter } from '../type';
 export class FilterComponent implements OnInit {
   filter: Filter | null = null;
 
-  selectedCategory: Category | null = null;
-  selectedProvince: string | null = null;
-  selectedPriceRange: number | null = null;
-  selectedSubcategory: string | null = null;
+  searchFilter: SearchFilter;
 
-  constructor(private searchService: SearchService) {}
+  constructor(private searchService: SearchService) {
+    this.searchFilter = {
+      category: null,
+      subcategory: null,
+      province: 'พื้นที่ใกล้ฉัน',
+      priceRange: null,
+    };
+  }
 
   ngOnInit(): void {
     this.searchService.getCurrentFilter().subscribe((currentFilter) => {
       this.filter = currentFilter;
     });
+    this.searchService.getCurrentSearchFilter().subscribe((currentSearch) => {
+      this.searchFilter = currentSearch;
+    });
   }
 
-  selectCategory(category: Category): void {
-    this.selectedCategory = category;
+  searchChanged(): void {
+    this.searchService.updateSearchFilter(this.searchFilter);
   }
 }

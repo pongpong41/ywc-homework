@@ -23,6 +23,13 @@ export interface Merchant {
   addressDistrictName: string;
 }
 
+export interface SearchFilter {
+  category: Category | null;
+  subcategory: string | null;
+  province: string | null;
+  priceRange: number | null;
+}
+
 export interface Filter {
   categories: Category[];
   provinces: string[];

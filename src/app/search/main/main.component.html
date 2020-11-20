@@ -6,17 +6,18 @@
     [fixedInViewport]="true"
     class="side-toggle"
   >
-    <p><button mat-button (click)="sidenav.toggle()">Toggle</button></p>
-    filter
     <app-filter class="filter"></app-filter>
   </mat-sidenav>
 
   <mat-sidenav-content>
-    <p><button mat-button (click)="sidenav.toggle()">Toggle</button></p>
-    <div>ผลการค้นหา</div>
+    <h2>ผลการค้นหา {{ searchText }}</h2>
     <div class="container">
       <app-filter class="filter"></app-filter>
-      <app-merchants class="merchant"></app-merchants>
+      <section class="merchant">
+        <div *ngFor="let merchant of merchants">
+          <app-merchants class="merchant" [merchant]="merchant"></app-merchants>
+        </div>
+      </section>
     </div>
   </mat-sidenav-content>
 </mat-sidenav-container>

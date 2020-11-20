@@ -2,7 +2,12 @@
 <div *ngIf="filter" class="box">
   <div class="filter-form">
     <label>ประเภทร้านค้า</label>
-    <mat-radio-group [(ngModel)]="selectedCategory" class="radio-group">
+    <mat-radio-group
+      [(ngModel)]="searchFilter.category"
+      (ngModelChange)="searchChanged()"
+      class="radio-group"
+    >
+      <mat-radio-button [value]="null">ทั้งหมด</mat-radio-button>
       <mat-radio-button
         *ngFor="let category of filter.categories"
         [value]="category"
@@ -15,7 +20,27 @@
   <div class="filter-form">
     <label>จังหวัด/ใกล้ฉัน</label>
     <mat-form-field appearance="outline">
-      <mat-select [(ngModel)]="selectedProvince">
+      <mat-select
+        [(ngModel)]="searchFilter.province"
+        (ngModelChange)="searchChanged()"
+      >
+        <mat-select-trigger>
+          <mat-icon
+            *ngIf="
+              searchFilter.province === 'พื้นที่ใกล้ฉัน' ||
+              searchFilter.province === 'สถานที่ทั้งหมด'
+            "
+            >location_on</mat-icon
+          >{{ searchFilter.province }}
+        </mat-select-trigger>
+        <mat-option [value]="'พื้นที่ใกล้ฉัน'">
+          <mat-icon>location_on</mat-icon>พื้นที่ใกล้ฉัน
+        </mat-option>
+        <mat-option [value]="'สถานที่ทั้งหมด'">
+          <mat-icon>location_on</mat-icon>
+          <!-- <span class="material-icons">location_on</span> -->
+          สถานที่ทั้งหมด
+        </mat-option>
         <mat-option
           *ngFor="let provinces of filter.provinces"
           [value]="provinces"
@@ -29,7 +54,11 @@
   <div class="filter-form">
     <label>ราคา</label>
     <mat-form-field appearance="outline">
-      <mat-select [(ngModel)]="selectedPriceRange" placeholder="กรุณาเลื่อก">
+      <mat-select
+        [(ngModel)]="searchFilter.priceRange"
+        (ngModelChange)="searchChanged()"
+        placeholder="กรุณาเลื่อก"
+      >
         <mat-option
           *ngFor="let priceRange of filter.priceRange; let i = index"
           [value]="i + 1"
@@ -40,11 +69,17 @@
     </mat-form-field>
   </div>
 
-  <div class="filter-form" *ngIf="selectedCategory">
-    <label>ประเภท{{ selectedCategory.name }}</label>
-    <mat-radio-group [(ngModel)]="selectedCategory" class="radio-group">
+  <div class="filter-form" *ngIf="searchFilter.category">
+    <label>ประเภท{{ searchFilter.category.name }}</label>
+    <mat-radio-group
+      [(ngModel)]="searchFilter.subcategory"
+      (ngModelChange)="searchChanged()"
+      class="radio-group"
+    >
+      <mat-radio-button [value]="null" checked>ทั้งหมด</mat-radio-button>
       <mat-radio-button
-        *ngFor="let subcategory of selectedCategory.subcategories"
+        *ngFor="let subcategory of searchFilter.category.subcategories"
+        [value]="subcategory"
       >
         {{ subcategory }}
       </mat-radio-button>

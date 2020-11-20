@@ -1,3 +1,19 @@
-<app-header></app-header>
-<app-nav></app-nav>
-<app-main></app-main>
+<mat-sidenav-container class="example-container">
+  <mat-sidenav
+    #sidenav
+    mode="over"
+    position="end"
+    [fixedInViewport]="true"
+    class="side-toggle"
+  >
+    <p><button mat-button (click)="sidenav.toggle()">Toggle</button></p>
+    filter
+    <app-filter class="filter"></app-filter>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <app-header (openEvent)="openSideBar()"></app-header>
+    <app-nav></app-nav>
+    <app-main></app-main>
+  </mat-sidenav-content>
+</mat-sidenav-container>

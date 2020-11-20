@@ -1,6 +1,9 @@
 .box {
-  border: 1px solid #e2e8f0;
   padding: 1rem;
+  color: rgba(0, 0, 0, 0.85);
+  border: 1px solid rgb(160, 174, 192);
+  background-color: #ffffff;
+  border-radius: 0.125rem;
 }
 
 .filter-form {
@@ -9,7 +12,7 @@
   margin-bottom: 32px;
 
   label {
-    font-size: 18px;
+    font-size: 16px;
     margin-bottom: 8px;
     font-weight: bold;
   }
@@ -20,6 +23,6 @@
   flex-direction: column;
 
   mat-radio-button {
-    margin-bottom: 8px;
+    margin-bottom: 4px;
   }
 }

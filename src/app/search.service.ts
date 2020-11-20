@@ -2,7 +2,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { map, catchError, tap } from 'rxjs/operators';
-import { ApiResult, Filter, Merchant } from './search/type';
+import { ApiResult, Filter, Merchant, SearchFilter } from './search/type';
 import { MOCK } from './responseMock';
 
 @Injectable({
@@ -17,6 +17,12 @@ export class SearchService {
     priceRange: [],
   });
   private readonly currentMerchant = new BehaviorSubject<Merchant[]>([]);
+  private readonly searchFilter = new BehaviorSubject<SearchFilter>({
+    category: null,
+    subcategory: null,
+    province: 'พื้นที่ใกล้ฉัน',
+    priceRange: null,
+  });
 
   constructor(private http: HttpClient) {}
 
@@ -45,6 +51,14 @@ export class SearchService {
     );
   }
 
+  get filter(): Filter {
+    return this.currentFilter.getValue();
+  }
+
+  get merchants(): Merchant[] {
+    return this.currentMerchant.getValue();
+  }
+
   getCurrentFilter(): Observable<Filter> {
     return this.currentFilter.asObservable();
   }
@@ -53,11 +67,14 @@ export class SearchService {
     return this.currentMerchant.asObservable();
   }
 
-  get filter(): Filter {
-    return this.currentFilter.getValue();
+  getCurrentSearchFilter(): Observable<SearchFilter> {
+    return this.searchFilter.asObservable();
   }
 
-  get merchants(): Merchant[] {
-    return this.currentMerchant.getValue();
+  updateSearchFilter(filter?: SearchFilter): void {
+    console.log(filter);
+    if (filter) {
+      this.searchFilter.next(filter);
+    }
   }
 }

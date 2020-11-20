@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { SearchService } from 'src/app/search.service';
 import { Merchant } from '../type';
 
@@ -8,18 +8,14 @@ import { Merchant } from '../type';
   styleUrls: ['./merchants.component.scss'],
 })
 export class MerchantsComponent implements OnInit {
-  merchants: Merchant[] = [];
+  @Input() merchant: Merchant;
 
   constructor(private searchService: SearchService) {}
 
-  ngOnInit(): void {
-    this.searchService.getCurrentMerchants().subscribe((currentMerchants) => {
-      this.merchants = currentMerchants;
-    });
-  }
+  ngOnInit(): void {}
 
-  getRecommendedText(category: string): string {
-    if (category === 'ร้านอาหาร') {
+  get recommendedText(): string {
+    if (this.merchant.categoryName === 'ร้านอาหาร') {
       return 'เมนูแนะนำ';
     }
     return 'สินค้าแนะนำ';
