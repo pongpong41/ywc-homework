@@ -1,4 +1,10 @@
-import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
+import {
+  ChangeDetectorRef,
+  Component,
+  OnDestroy,
+  OnInit,
+  ViewEncapsulation,
+} from '@angular/core';
 import { SearchService } from 'src/app/search.service';
 import { Merchant, SearchFilter } from '../type';
 

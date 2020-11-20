@@ -1,23 +1,13 @@
-<mat-sidenav-container class="example-container">
-  <mat-sidenav
-    #sidenav
-    mode="over"
-    position="end"
-    [fixedInViewport]="true"
-    class="side-toggle"
-  >
-    <app-filter class="filter"></app-filter>
-  </mat-sidenav>
-
-  <mat-sidenav-content>
-    <h2>ผลการค้นหา {{ searchText }}</h2>
-    <div class="container">
-      <app-filter class="filter"></app-filter>
-      <section class="merchant">
-        <div *ngFor="let merchant of merchants">
-          <app-merchants class="merchant" [merchant]="merchant"></app-merchants>
-        </div>
-      </section>
+<section class="container">
+  <h2 class="title">ผลการค้นหา {{ searchText }}</h2>
+  <div class="grid-container">
+    <div class="filter">
+      <app-filter class="box"></app-filter>
     </div>
-  </mat-sidenav-content>
-</mat-sidenav-container>
+    <section class="merchant">
+      <div *ngFor="let merchant of merchants">
+        <app-merchants class="merchant" [merchant]="merchant"></app-merchants>
+      </div>
+    </section>
+  </div>
+</section>

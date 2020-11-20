@@ -1,4 +1,3 @@
-<!-- <section class="grid-container"> -->
 <div class="box">
   <div class="image-container">
     <div
@@ -16,12 +15,16 @@
     <div class="detail">
       {{ merchant.subcategoryName }}
       <span *ngIf="merchant.priceLevel">
-        <span class="separator">|</span>{{ merchant.priceLevel }}</span
-      >
+        <span class="separator-text">|</span>
+        <span [class.font-black]="merchant.priceLevel > 0">฿</span>
+        <span [class.font-black]="merchant.priceLevel > 1">฿</span>
+        <span [class.font-black]="merchant.priceLevel > 2">฿</span>
+        <span [class.font-black]="merchant.priceLevel > 3">฿</span>
+      </span>
       <span
         *ngIf="merchant.addressDistrictName || merchant.addressProvinceName"
       >
-        <span class="separator">|</span>{{ merchant.addressDistrictName }}
+        <span class="separator-text">|</span>{{ merchant.addressDistrictName }}
         {{ merchant.addressProvinceName }}</span
       >
     </div>
@@ -32,7 +35,19 @@
         <b class="font-black">{{ recommendedText }}: </b>
         <span *ngFor="let item of merchant.recommendedItems">{{ item }} </span>
       </div>
+      <div>
+        <span *ngFor="let facility of merchant.facilities">
+          <!-- <span>{{ facility }}</span> -->
+          <!-- <span class="circle-border"> -->
+          <span
+            class="material-icons md-18 circle-border"
+            [matTooltip]="facility"
+          >
+            {{ getIconName(facility) }}
+          </span>
+        </span>
+        <!-- </span> -->
+      </div>
     </div>
   </div>
 </div>
-<!-- </section> -->

@@ -1,4 +1,10 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  OnInit,
+  Output,
+  ViewEncapsulation,
+} from '@angular/core';
 import { SearchService } from 'src/app/search.service';
 import { Filter, SearchFilter } from 'src/app/search/type';
 
@@ -6,14 +12,22 @@ import { Filter, SearchFilter } from 'src/app/search/type';
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class HeaderComponent implements OnInit {
   @Output() openEvent = new EventEmitter<undefined>();
 
   filter: Filter | null = null;
+  searchFilter: SearchFilter;
 
-  searchFilter?: SearchFilter;
-  constructor(private searchService: SearchService) {}
+  constructor(private searchService: SearchService) {
+    this.searchFilter = {
+      category: null,
+      subcategory: null,
+      province: 'พื้นที่ใกล้ฉัน',
+      priceRange: null,
+    };
+  }
 
   ngOnInit(): void {
     this.searchService.getCurrentFilter().subscribe((currentFilter) => {
@@ -33,6 +47,6 @@ export class HeaderComponent implements OnInit {
     const categoriesName = this.filter?.categories.map(
       (category) => category.name
     );
-    return categoriesName?.join(' ') || '';
+    return 'ค้นหา ชื่อ ' + categoriesName?.join(' ') || '';
   }
 }

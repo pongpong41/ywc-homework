@@ -1,5 +1,108 @@
+$blue: rgb(39, 57, 124);
+
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 8px 32px;
+}
+
+.logo {
+  position: relative;
+  display: flex;
+  margin-right: 16px;
+  align-items: center;
+}
+
+.logo-img {
+  white-space: nowrap;
+
+  .jigsaw-blue {
+    font-size: 36px;
+    transform: rotate(-10deg);
+    color: $blue;
+  }
+
+  .jigsaw-white {
+    transform: rotate(80deg);
+    font-size: 36px;
+    margin-top: -2px;
+    margin-left: -9px;
+    color: #ccc;
+  }
+
+  .heart {
+    position: absolute;
+    color: #c42424;
+    left: 18px;
+    top: 6px;
+    transform: rotate(-10deg);
+  }
+}
+
+.logo-text {
+  font-style: italic;
+  font-weight: bold;
+  font-size: 18px;
+  color: $blue;
+  white-space: nowrap;
+}
+
+// .logo {
+//   height: 40px;
+//   margin-right: 32px;
+// }
+
+.input-group {
+  display: flex;
+  width: 100%;
+}
+
+app-header .mat-form-field-appearance-outline {
+  &.left-input {
+    width: 192px;
+    .mat-form-field-outline-end {
+      border-radius: 0 !important;
+    }
+  }
+
+  &.right-input {
+    width: 100%;
+    margin-left: -1px;
+
+    @media (min-width: 769px) {
+      .mat-form-field-outline-start {
+        border-radius: 0 !important;
+      }
+    }
+  }
+
+  .mat-form-field-wrapper {
+    margin: 0;
+  }
+}
+
+.action-mobile {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .header {
+    padding: 8px 0 8px 16px;
+  }
+
+  .logo-text {
+    display: none;
+  }
+
+  .action-mobile {
+    display: block;
+    color: $blue;
+  }
+
+  app-header .mat-form-field-appearance-outline {
+    &.left-input {
+      display: none;
+    }
+  }
 }

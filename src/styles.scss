@@ -1,8 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 // @import url("https://fonts.googleapis.com/css2?family=Prompt");
 @import url("https://fonts.googleapis.com/css2?family=Prompt:wght@200;300;400;500;600&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap");
+// @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap");
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+@import url("https://cdn.lazywasabi.net/fonts/IBMPlexSansThai/IBMPlexSansThai.css");
 @import "./styles/config-theme.scss";
 
 html,
@@ -12,8 +13,8 @@ body {
 body {
   margin: 0;
   font-size: 14px;
-  font-family: "Open Sans", Prompt, Roboto;
-  font-weight: 300;
+  font-family: "sans-serif", "IBM Plex Sans Thai", Prompt;
+  // font-weight: 300;
 }
 
 h1,
@@ -25,7 +26,28 @@ h6 {
   margin: 0;
 }
 
-mat-form-field .mat-form-field-wrapper {
-  margin: 0;
-  padding: 0;
+.separator-text {
+  display: inline-block;
+  margin: 0 12px;
+}
+
+mat-form-field {
+  .mat-form-field-wrapper {
+    margin: 0;
+    padding: 0;
+  }
+  .mat-form-field-infix {
+    border-top: 0;
+  }
+  .mat-form-field-infix::after {
+    margin-top: 0px;
+  }
+}
+
+.mat-form-field-appearance-outline .mat-form-field-outline {
+  top: 0;
+}
+
+.mat-form-field-appearance-outline .mat-select-arrow-wrapper {
+  transform: translateY(0) !important;
 }

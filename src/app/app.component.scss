@@ -1,0 +1,23 @@
+.side-toggle {
+  width: 100%;
+}
+
+.toolbar {
+  position: relative;
+}
+
+.header {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-weight: bold;
+}
+
+.filter-container {
+  padding: 40px;
+
+  button {
+    width: 100%;
+  }
+}

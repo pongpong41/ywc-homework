@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { SearchService } from 'src/app/search.service';
 import { Merchant } from '../type';
-
+import { iconMap } from './icons';
 @Component({
   selector: 'app-merchants',
   templateUrl: './merchants.component.html',
@@ -19,5 +19,9 @@ export class MerchantsComponent implements OnInit {
       return 'เมนูแนะนำ';
     }
     return 'สินค้าแนะนำ';
+  }
+
+  getIconName(facility: string): string {
+    return iconMap[facility] || 'help';
   }
 }

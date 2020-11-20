@@ -1,29 +1,37 @@
 <section class="header">
-  <img src="assets/img/halfhalf-logo.png" alt="logo" />
+  <!-- <img class="logo" src="assets/img/halfhalf-logo.png" alt="logo" /> -->
+  <div class="logo">
+    <div class="logo-img">
+      <span class="material-icons jigsaw-blue">extension</span>
+      <span class="material-icons jigsaw-white">extension</span>
+      <span class="material-icons heart">favorite</span>
+    </div>
+    <div class="logo-text">คนละครึ่ง</div>
+  </div>
 
-  <form class="example-form">
+  <div class="input-group">
     <mat-form-field
       class="example-full-width"
       appearance="outline"
-      class="custom-mat-form-field"
+      class="custom-mat-form-field left-input"
     >
-      <select matNativeControl placeholder="Ex. Pizza" value="Sushi">
-        <option *ngFor="let provinces of filter?.provinces" [value]="provinces">
+      <mat-select [(ngModel)]="searchFilter.province">
+        <mat-option
+          *ngFor="let provinces of filter?.provinces"
+          [value]="provinces"
+        >
           {{ provinces }}
-        </option>
-      </select>
+        </mat-option>
+      </mat-select>
     </mat-form-field>
 
-    <mat-form-field class="example-full-width" appearance="outline">
+    <mat-form-field class="example-full-width right-input" appearance="outline">
       <input matInput [placeholder]="hintTextSearch" />
+      <mat-icon matSuffix>search</mat-icon>
     </mat-form-field>
-  </form>
+  </div>
 
-  <button
-    mat-icon-button
-    aria-label="Example icon-button with a heart icon"
-    (click)="openFilter()"
-  >
+  <button mat-icon-button (click)="openFilter()" class="action-mobile">
     <mat-icon>filter_alt</mat-icon>
   </button>
 </section>

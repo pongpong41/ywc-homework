@@ -28,7 +28,7 @@ $theme: mat-light-theme(
 );
 
 $custom-typography: mat-typography-config(
-  $font-family: '"Open Sans", Prompt, Roboto',
+  $font-family: '"Open Sans", "IBM Plex Sans Thai", Prompt',
   $headline: mat-typography-level(32px, 48px, 700),
   $body-1: mat-typography-level(16px, 24px, 500),
 );

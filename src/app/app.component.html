@@ -6,9 +6,16 @@
     [fixedInViewport]="true"
     class="side-toggle"
   >
-    <p><button mat-button (click)="sidenav.toggle()">Toggle</button></p>
-    filter
-    <app-filter class="filter"></app-filter>
+    <mat-toolbar color="primary" class="toolbar">
+      <button mat-icon-button (click)="sidenav.toggle()">
+        <mat-icon>arrow_back_ios</mat-icon>
+      </button>
+      <span class="header">กรอกผล</span>
+    </mat-toolbar>
+    <div class="filter-container">
+      <app-filter></app-filter>
+      <button mat-stroked-button color="primary">ตกลง</button>
+    </div>
   </mat-sidenav>
 
   <mat-sidenav-content>

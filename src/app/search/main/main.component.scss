@@ -1,23 +1,15 @@
 .container {
-  background: linear-gradient(rgb(255, 255, 255) 20%, rgb(142, 208, 241));
-  background-attachment: fixed;
-}
-
-mat-sidenav-content {
   padding: 1rem;
   background: linear-gradient(rgb(255, 255, 255) 20%, rgb(142, 208, 241));
   background-attachment: fixed;
 }
 
-.side-toggle {
-  width: 100%;
+.title {
+  font-size: 1.25rem;
+  margin-bottom: 40px;
 }
 
-.side-open {
-  width: 240px;
-}
-
-.container {
+.grid-container {
   display: grid;
   grid-template-columns: auto 1fr;
   grid-template-areas: "side content";
@@ -26,20 +18,28 @@ mat-sidenav-content {
     grid-area: side;
     width: 350px;
     padding-right: 32px;
+
+    .box {
+      display: block;
+      padding: 1rem;
+      color: rgba(0, 0, 0, 0.85);
+      border: 1px solid rgb(160, 174, 192);
+      background-color: #ffffff;
+      border-radius: 0.125rem;
+    }
   }
 
   .merchant {
     grid-area: content;
     display: flex;
     flex-direction: column;
+  }
+}
 
-    .box {
-      display: grid;
-      grid-template-columns: 240px 1fr;
-      grid-template-areas: "image-container text-container";
-      min-height: 232px;
-      background-color: white;
-      border: 1px solid rgb(201, 225, 233);
+@media (max-width: 768px) {
+  .grid-container {
+    .filter {
+      display: none;
     }
   }
 }

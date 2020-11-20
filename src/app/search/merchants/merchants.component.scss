@@ -1,3 +1,5 @@
+$green: #1bc300;
+
 .grid-container {
   display: grid;
   grid-template-columns: repeat(1, minmax(0, 1fr));
@@ -54,7 +56,7 @@
     border-radius: 4px;
 
     &.green {
-      background-color: #1bc300;
+      background-color: $green;
     }
 
     &.gray {
@@ -71,8 +73,27 @@
     color: black;
   }
 
-  .separator {
+  .circle-border {
     display: inline-block;
-    margin: 0 16px;
+    padding: 4px;
+    // width: ;
+    font-size: 18px;
+    color: $green;
+    border: 1px solid $green;
+    border-radius: 50%;
+    margin-right: 8px;
+    cursor: default;
+  }
+}
+
+@media (max-width: 1024px) {
+  .box {
+    grid-template-columns: none;
+    grid-template-rows: 224px 1fr;
+    grid-template-areas: "image-container" "text-container";
+
+    .image-container {
+      padding: 0;
+    }
   }
 }
