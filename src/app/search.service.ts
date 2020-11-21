@@ -95,6 +95,10 @@ export class SearchService {
         (merchant) => merchant.priceLevel === filter.priceRange
       );
     }
+
+    if (!filter.category) {
+      filter.subcategory = null;
+    }
     this.searchFilter.next(filter);
     this.currentMerchant.next(filteredMerchants);
   }

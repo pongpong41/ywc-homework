@@ -25,6 +25,7 @@ export class AppComponent implements OnInit {
   }
 
   mock(): void {
+    this.isLoading = false;
     this.searchService.setMockData();
   }
 }
